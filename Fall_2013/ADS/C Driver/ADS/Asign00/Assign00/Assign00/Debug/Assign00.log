@@ -1,0 +1,26 @@
+﻿Build started 9/2/2013 3:32:49 PM.
+     1>Project "C:\Users\Piush\ADS\Asign00\Assign00\Assign00\Assign00.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\hw00_tree00\Factory00.cpp ..\..\hw00_tree00\StringReverse.cpp
+         StringReverse.cpp
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         Factory00.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Piush\ADS\Asign00\Assign00\Debug\Assign00.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Piush\ADS\Asign00\Assign00\Debug\Assign00.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Piush\ADS\Asign00\Assign00\Debug\Assign00.lib" /MACHINE:X86 Debug\AbstractGrader.obj
+         Debug\Date.obj
+         Debug\Factory00.obj
+         Debug\Grader00.obj
+         Debug\main.obj
+         Debug\ObjectFactory.obj
+         Debug\Stopwatch.obj
+         Debug\StringEcho.obj
+         Debug\StringReverse.obj
+         Debug\UnixStopwatch.obj
+         Debug\WindowsStopwatch.obj
+         Assign00.vcxproj -> C:\Users\Piush\ADS\Asign00\Assign00\Debug\Assign00.exe
+     1>Done Building Project "C:\Users\Piush\ADS\Asign00\Assign00\Assign00\Assign00.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.25

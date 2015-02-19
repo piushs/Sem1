@@ -1,0 +1,242 @@
+static void sift_in (double  * root, int size, heapsizes hsz,int num)
+{
+	/*
+    double  * left, * right; // Pos. of children heaps
+    double  * next;          // Chosen child (greater root)
+    double  tmp;             // Value to move down
+    int nsz;                        // Size of chosen child heap
+	double *bck;
+	int flag=0;
+   /*
+    if (size < 2)        // If we are in a leaf,
+	{*/
+		int  max;      // Effective root value of curr. heap
+   
+    tmp = *root;      // Backup the initial value
+   
+    do // Traverse the list of heaps
+    {                      // from right to left
+        max = tmp;
+       
+        if (hsz.offset > 1)           // If this heap has children
+        {
+			if (flag ==0)
+			{
+            right = root - 1;                 // Locate children
+			left = right - L[hsz.offset-2];}
+           
+            if (max < *left)                  // Use the maximum
+                max = *left;                  // value for the
+                                              // comparison below,
+            if (max < *right)                 // since it is the
+                max = *right;                 // effective root
+        }                                     // of this heap
+		else
+			max=tmp;
+       
+		if (hsz.mask != 1)
+			next = root - L[hsz.offset];  // Position of next heap
+		else
+			next = root;
+
+        if (*next <= max)             // If the ordeing is OK,
+            break;                    // stop here
+
+        *root = *next;                // Otherwise, push up the
+        root = next;                  // root of that heap and
+                                      // go there
+        do
+        {                             // Extract the previous
+            hsz.mask >>= 1;           // heap from the list (note
+            hsz.offset ++;            // that 'hsz' is just a
+        }                             // temporary copy)
+        while (!(hsz.mask&1));
+		size=hsz.offset;
+
+		
+		
+	
+    
+                                      // Put the initial root in
+    *root = tmp;
+	//if (size > 2)
+	//sift_in (root, hsz.offset, hsz,num);
+		/*
+		double *swap;
+		double val;
+		swap = root -1;
+
+		val = *root;
+		*root = *swap;
+		*swap = val;*/
+     /*   return;  */       // there's nothing to do
+	//}
+	
+    tmp = *root;         // Backup the initial value
+	bck = root;
+//	if (hsz.mask != 1 && size < 2)
+
+
+
+    if (size >= 2){  
+
+    do                        // While there are children heaps...
+    {
+        right = root - 1;           // Locate children
+        left = right - L[size-2];
+       
+        if (*right < *left)         // Compare their roots
+        {
+            next = left;            // Choose left child heap
+			nsz = size - 1;         // (larger subheap)
+        }
+        else
+        {
+            next = right;           // Choose right child heap
+            nsz = size - 2;         // (smaller subheap)
+        }
+                                    // If both roots are less than
+        if (*next <= tmp)           // the initial root, we have
+            break;                  // reached its final position
+
+        *root = *next;              // Otherwise, push up the
+                                    // greater root and
+        root = next;                // proceed down to the
+        size = nsz;                 // next level
+    }
+    while (size > 1);          // If we reach a leaf, stop
+	*root = tmp;
+
+	
+	}
+	/*
+	flag =0;
+	if (hsz.mask != 1 && hsz.offset >= 2){
+		flag =1;
+		root = bck;
+	do
+        {                             // Extract the previous
+            hsz.mask >>= 1;           // heap from the list (note
+            hsz.offset ++;            // that 'hsz' is just a
+        }                             // temporary copy)
+		while (!(hsz.mask&1));
+	
+	right = root - L[hsz.offset];                 // Locate children
+			}
+
+	}while (hsz.mask != 1 || flag == 1) ;
+
+
+   
+	if (size >= 2)
+	{
+	tmp = *root;
+	//bck = root;
+	do                        // While there are children heaps...
+    {
+        right = root - 1;           // Locate children
+        left = right - L[size-2];
+       
+        if (*right < *left)         // Compare their roots
+        {
+            next = left;            // Choose left child heap
+			nsz = size - 1;         // (larger subheap)
+        }
+        else
+        {
+            next = right;           // Choose right child heap
+            nsz = size - 2;         // (smaller subheap)
+        }
+                                    // If both roots are less than
+        if (*next <= tmp)           // the initial root, we have
+            break;                  // reached its final position
+
+        *root = *next;              // Otherwise, push up the
+                                    // greater root and
+        root = next;                // proceed down to the
+        size = nsz;                 // next level
+    }
+    while (size > 1);          // If we reach a leaf, stop
+	*root = tmp;
+//	root = bck;
+	}        // Write the initial value in its    // final position  */
+================================
+
+
+/*
+    double  * next;   // Pos. of (root of) next heap
+    double  * left;   // Pos. of left child of current heap
+    double  * right;  //  "   "  right  "   "     "     "
+    double  tmp;      // Value to move left
+    double  max;      // Effective root value of curr. heap
+	double *max_ptr;
+	double swap;
+    int flag =0;
+    tmp = *root;      // Backup the initial value
+    max=tmp;
+	
+	int firsttime = 0;
+	max_ptr = root;
+       
+    do  // Traverse the list of heaps
+    {                      // from right to left
+    //    max = tmp;
+       
+        if (hsz.offset > 1 && firsttime == 0 )           // If this heap has children
+        {
+            right = root - 1;                 // Locate children
+            left = right - L[hsz.offset-2];
+            tmp = *root;
+            if (max < *left)     
+			{
+				
+                max = *left; 
+				max_ptr = left;
+			}		// value for the
+                                              // comparison below,
+            if (max < *right)    
+			{
+				max = *right; 
+				max_ptr = right;
+			}
+			// since it is the
+                                // effective root
+			swap = *max_ptr;// Use the maximum
+				*max_ptr = *root;
+				*root = swap;
+            
+			firsttime =1;
+			sift_in (max_ptr, hsz.offset, hsz,num);
+			
+		}                                     // of this heap 
+
+
+       
+        next = root - L[hsz.offset];  // Position of next heap
+
+        if (*next <= *root)             // If the ordeing is OK,
+            break;                    // stop here
+		else
+		{
+			swap = *next;
+			*next = tmp;
+		    *root = swap;
+			sift_in (root, hsz.offset, hsz,num);
+		}
+
+
+       // *root = *next;                // Otherwise, push up the
+        root = next;                  // root of that heap and
+                                      // go there
+        do
+        {                             // Extract the previous
+            hsz.mask >>= 1;           // heap from the list (note
+            hsz.offset ++;            // that 'hsz' is just a
+        }                             // temporary copy)
+        while (!(hsz.mask&1));
+    }while (hsz.mask != 1);
+
+
+                                      // Put the initial root in
+    //*root = tmp;                      // the heap where we stopped
+    sift_in (root, hsz.offset, hsz,num);       // and ensure the correct */
